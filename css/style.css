@@ -173,7 +173,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--background-primary-color);
+    background: linear-gradient(to bottom, #130359, #6b0086);
     color: #fff;
     padding: 30px 0;
 }
