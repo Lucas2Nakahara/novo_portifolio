@@ -18,7 +18,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.7;
     color: var(--text-color-primary);
-    background-color: var(--background-primary-color);
+    background-color: var(--background-primary-color) !important;
 }
 
 /* Navbar */
