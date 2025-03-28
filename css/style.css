@@ -36,17 +36,17 @@ header {
 
 .navbar-brand {
     font-weight: 700;
-    color: var(--background-primary-color);
+    color: var(--details-color) !important;
 }
 
 .nav-link {
     font-weight: 500;
-    color: var(--text-color-primary);
+    color: var(--background2-color) !important;
     margin-left: 10px;
 }
 
 .nav-link:hover {
-    color: var(--details-color);
+    color: var(--details-color) !important;
 }
 
 /* Hero Section */
@@ -201,7 +201,7 @@ header {
 }
 
 .overlay .btn:hover {
-    background-color: #d65a00;
+    background-color: var(--details-color);
 }
 
 
@@ -224,12 +224,18 @@ header {
 
 /*btn*/
 .btn {
-    background-color: var(--details-color);
-    color: #fff;
+    background-color: #6b0086 !important; /* Cor roxa escura */
+    color: #fff !important;
     padding: 12px 30px;
     border-radius: 30px;
     text-decoration: none;
-    transition: background 0.3s;
+    transition: transform 0.3s linear; /*adicionando suavidade*/
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-5px);/*Botão para cima*/
+    background-color: #520064!important; 
 }
 
 .social-links {
