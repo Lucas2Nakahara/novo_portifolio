@@ -132,78 +132,198 @@ header {
 }
 
 .projects-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
 }
 
+/* Cartão do projeto */
 .project-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #27272a; 
-    transition: background 0.3s ease-in-out;
-    min-height: 390px;
-    border-radius: 15px; 
-    overflow: hidden; 
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0f0b16;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  cursor: pointer;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px; 
-    transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay padrão (desktop - aparece ao hover) */
+.project-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(24,6,40,0.98) 40%);
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  min-height: 500px;
+  z-index: 2;
 }
 
 .project-card:hover .overlay {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.781);
+  opacity: 1;
 }
 
-.project-card .overlay {
+.overlay h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.overlay p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 90%;
+}
+
+.overlay .btn {
+  display: inline-block;
+  background: #6b2bd6;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.4s ease, transform 0.4s ease;
+  transform: translateY(0);
+}
+
+.overlay .btn:hover {
+  background: #8b3fd6;
+  transform: translateY(-3px);
+}
+
+/* Tablet: 1 coluna */
+@media (max-width: 992px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 1 projeto por vez, com imagem e overlay ao hover */
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .project-card {
+    margin: 0 auto 1.25rem;
+    max-width: 720px;
+    border-radius: 12px;
+    background: #0f0b16;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Mostra imagem no mobile */
+  .project-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Overlay aparece ao hover no mobile também */
+  .project-card .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(24,6,40,0.98) 40%);
     color: #fff;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    transition: opacity 0.3s ease;
     opacity: 0;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
-    padding: 1rem;
-}
+    min-height: 400px;
+    z-index: 2;
+    margin: 0;
+    border-radius: 0;
+    border-top: none;
+    transform: none;
+  }
 
-.overlay h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
+  .project-card:hover .overlay {
+    opacity: 1;
+  }
 
-.overlay p {
-    font-size: 1rem;
+  .project-card .overlay h3 {
+    font-size: 1.25rem;
     margin-bottom: 1rem;
-}
+    font-weight: 700;
+  }
 
+  .project-card .overlay p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    max-width: 90%;
+  }
 
-.overlay .btn {
-    background-color: var(--cor-laranja);
+  .project-card .overlay .btn {
+    display: inline-block;
+    background: #6b2bd6;
     color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
     text-decoration: none;
-    transition: all 0.3s ease;
-}
+    font-weight: 600;
+    transition: background 0.3s ease;
+    align-self: auto;
+  }
 
-.overlay .btn:hover {
-    background-color: var(--details-color);
+  .project-card .overlay .btn:hover {
+    background: #8b3fd6;
+  }
 }
-
 
 /* Contact */
 .contact-info {
@@ -324,123 +444,12 @@ header {
     }
 }
 
-.projects-container{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-}
-
-/* cartão do projeto */
-.project-card{
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #0f0b16;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-.project-card img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* overlay padrão (desktop) */
-.project-card .overlay{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(24,6,40,0.9) 60%);
-  color: #fff;
-  padding: 1.2rem;
-  transition: transform .25s ease, opacity .25s ease;
-  transform: translateY(0);
-}
-
-/* Tablet: 2 colunas */
-@media (max-width: 992px){
-  .projects-container{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile: 1 projeto por vez e overlay fixo abaixo da imagem para leitura */
-@media (max-width: 768px){
-  .hero-img,
-  .hero-img img {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    width: 0 !important;
-  }
-
-  /* Ajuste rápido para alinhar o conteúdo quando a imagem é removida */
-  .hero-section .col-md-6:first-child {
-    width: 100%;
-    padding-bottom: 1rem;
-  }
-  .projects-container{
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-
-  .project-card{
-    margin: 0 auto 1.25rem;
-    max-width: 720px;
-    border-radius: 12px;
-  }
-
-  .project-card img{
-    display: block;
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
-
-  /* Move a área de informações para abaixo da imagem (posição estática) */
-  .project-card .overlay{
-    position: relative;
-    background: #2b1242; /* roxo escuro */
-    color: #fff;
-    padding: 1rem;
-    margin: 0;
-    transform: none;
-    opacity: 1;
-  }
-
-  .project-card .overlay h3{
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-card .overlay p{
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin-bottom: 0.75rem;
-  }
-
-  .project-card .btn{
-    display: inline-block;
-    background: #6b2bd6;
-    color: #fff;
-    padding: 0.5rem 0.9rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-  }
-}
-/* ...existing code... */
-
 /* Ajuste mobile: remover gap/borda entre imagem e texto e deixar separação sólida */
 @media (max-width: 768px) {
-  .project-card {
+   .project-card {
     background: transparent; /* evita que a cor do card apareça entre imagem e texto */
     box-shadow: none;         /* opcional: aparência mais plana no mobile */
-  }
+   }
 
   .project-card img {
     border-radius: 12px 12px 0 0; /* apenas topo arredondado */
@@ -460,5 +469,4 @@ header {
     border-top: 4px solid var(--details-color); /* linha sólida de separação */
   }
 }
-/* ...existing code... */
 
