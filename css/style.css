@@ -22,7 +22,7 @@ body {
     min-height: 100vh; 
 }
 header {
-    background: linear-gradient(to bottom,  #130359, #0e0d0d,);
+    background: linear-gradient(to bottom, #130359, #0e0d0d);
     color: white; 
     margin: 0;
 }
@@ -92,7 +92,6 @@ header {
     border-radius: 50%; 
     object-fit: cover;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); 
-} 
 }
 
 /* Sections */
