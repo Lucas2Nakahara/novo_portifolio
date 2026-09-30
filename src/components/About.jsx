@@ -1,9 +1,22 @@
 import Reveal from './Reveal.jsx'
 
-const skills = [
-  'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React',
-  'Nuvemshop', 'Shopify', 'WooCommerce', 'WordPress', 'Elementor',
-  'E-commerce', 'Design', 'IA', 'Automações',
+const techGroups = [
+  {
+    label: 'Desenvolvimento Frontend',
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'],
+  },
+  {
+    label: 'Lojas & CMS',
+    items: ['Nuvemshop', 'Shopify', 'WooCommerce', 'WordPress', 'Elementor'],
+  },
+  {
+    label: 'E-commerce & Design',
+    items: ['E-commerce', 'Design'],
+  },
+  {
+    label: 'Automação & IA',
+    items: ['Automações', 'IA'],
+  },
 ]
 
 function About() {
@@ -31,14 +44,21 @@ function About() {
           </Reveal>
 
           <Reveal delay={160} className="about-card about-card--skills">
-            <h3>Áreas de atuação</h3>
-            <div className="skills">
-              {skills.map((s) => (
-                <span key={s} className="skill-tag">
-                  {s}
-                </span>
+            <h3>Stack &amp; Ferramentas</h3>
+            <ul className="tech-groups">
+              {techGroups.map((group) => (
+                <li key={group.label} className="tech-group">
+                  <span className="tech-group__label">{group.label}</span>
+                  <div className="tech-group__items">
+                    {group.items.map((item) => (
+                      <span key={item} className="skill-tag">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </Reveal>
         </div>
       </div>
